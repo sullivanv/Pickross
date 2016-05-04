@@ -1,7 +1,6 @@
 #include "functions.h"
 #include <time.h>
 
-
 void	my_print_real_tab(t_info my_info)
 {
   int i;
@@ -10,14 +9,11 @@ void	my_print_real_tab(t_info my_info)
   i = 0;
   j = 0;
   usleep(50000);
-  my_putchar('\n');
   my_putstr("\033c");
   while (i < my_info.nbligne)
     {
       while (j < my_info.nbcolonne)
 	{
-	  //	  	  my_put_nbr(my_info.tab[i][j]);
-	  //  my_putchar(' ');
 	  if (my_info.tab[i][j] == 1)
 	    my_putstr("\033[42m  \033[0m");
 	  if (my_info.tab[i][j] == 0)
@@ -46,10 +42,10 @@ int	my_count_total(int* row)
       if (i > 1)
 	total++;
     }
-  return(total);
+  return (total);
 }
 
-int **my_remplissage_col(int **tab, int *col, int j, int nbligne)
+int	**my_remplissage_col(int **tab, int *col, int j, int nbligne)
 {
   int i;
   int x;
@@ -75,7 +71,7 @@ int **my_remplissage_col(int **tab, int *col, int j, int nbligne)
   return (tab);
 }
 
-int *my_remplissage_row(int *tab, int *row, int nbcolonne)
+int	*my_remplissage_row(int *tab, int *row, int nbcolonne)
 {
   int i;
   int x;
@@ -84,7 +80,6 @@ int *my_remplissage_row(int *tab, int *row, int nbcolonne)
   i = 0;
   x = 0;
   j = 0;
-  my_putchar('a');
   while (row[i] != -1)
     {
       x = row[i];
@@ -102,13 +97,13 @@ int *my_remplissage_row(int *tab, int *row, int nbcolonne)
   return (tab); 
 }
 
-int *my_remplissage_row2(int *tab, int *row, int nbcolonne)
+int	*my_remplissage_row2(int *tab, int *row, int nbcolonne)
 {
   int i;
-  int *s1;
-  int *s2;
   int x;
   int j;
+  int *s1;
+  int *s2;
 
   j = 0;
   i = 0;
@@ -139,7 +134,7 @@ int *my_remplissage_row2(int *tab, int *row, int nbcolonne)
   return (tab);
 }
 
-int **my_remplissage_col2(int **tab, int *col, int nbligne, int y)
+int	**my_remplissage_col2(int **tab, int *col, int nbligne, int y)
 {
   int i;
   int *s1;
@@ -285,7 +280,7 @@ int	my_count_tab_col(int **tab, int x, int nbligne)
   return (count);
 }
 
-int **my_remplissage_false_col(int **tab, int x, int nbligne)
+int	**my_remplissage_false_col(int **tab, int x, int nbligne)
 {
   int i;
 
@@ -299,7 +294,7 @@ int **my_remplissage_false_col(int **tab, int x, int nbligne)
   return (tab);
 }
 
-int **my_search_true_col(t_info my_info, int x)
+int	**my_search_true_col(t_info my_info, int x)
 {
   int i;
   int j;
@@ -326,11 +321,9 @@ int **my_search_true_col(t_info my_info, int x)
 	      j++;
 	    }
 	}
-      //      i++;
       if (j == my_info.col[x][count])
 	{
 	  i = i - j;
-	  //	  j = 0;
 	  count++;
 	  while (my_info.tab[i][x] != 2 && zz == 0)
 	    {
@@ -348,7 +341,7 @@ int **my_search_true_col(t_info my_info, int x)
 }
 
 
-t_info my_search_false_col(t_info my_info)
+t_info	my_search_false_col(t_info my_info)
 {
   int x;
   int count;
@@ -388,7 +381,7 @@ int     my_count_tab_row(int **tab, int x, int nbligne)
   return (count);
 }
 
-int **my_remplissage_false_row(int **tab, int x, int nbligne)
+int	**my_remplissage_false_row(int **tab, int x, int nbligne)
 {
   int i;
 
@@ -402,46 +395,7 @@ int **my_remplissage_false_row(int **tab, int x, int nbligne)
   return (tab);
 }
 
-/*int **my_search_true_row(t_info my_info, int x)
-{
-  int i;
-  int j;
-  int count;
-
-  count = 0;
-  i = 0;
-  j = 0;
-  while (i < my_info.nbcolonne)
-    {
-      while (my_info.tab[x][i] == 2)
-	i++;
-      while (my_info.tab[x][i] != 2)
-	{
-	  i++;
-	  j++;
-	}
-      if (j == my_info.row[x][count])
-	{
-	  i = i - j;
-	  //	  j = 0;
-	  count++;
-	  while (my_info.tab[x][i] != 2)
-	    {
-	      my_info.tab[x][i] = 1;
-	      i++;
-	    }
-	}
-      else
-	i++;
-      j = 0;
-    }
-  return (my_info.tab);
-}*/
-
-
-
-
-int **my_search_true_row(t_info my_info, int x)
+int	**my_search_true_row(t_info my_info, int x)
 {
   int i;
   int j;
@@ -468,11 +422,9 @@ int **my_search_true_row(t_info my_info, int x)
               j++;
             }
         }
-      //      i++;
       if (j == my_info.row[x][count])
         {
           i = i - j;
-          //      j = 0;                                                                                                                                   
           count++;
           while (my_info.tab[x][i] != 2 && zz == 0)
             {
